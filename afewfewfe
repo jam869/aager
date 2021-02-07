@@ -47,7 +47,7 @@ let observer = new MutationObserver((mutations) => {
                     newscript.async = true;
                     newscript.textContent = editCore(coretext);
                     document.body.appendChild(newscript);
-                    setTimeout(() => {
+                 
                         window.client = new Client();
                     }, 3500);
                 }
@@ -124,7 +124,7 @@ class Client {
         let check = setInterval(() => {
             if (document.readyState == "complete") {
                 clearInterval(check);
-                setTimeout(() => {
+              
                     this.loadGUI();
                 }, 1500);
             }
