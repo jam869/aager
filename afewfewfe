@@ -47,9 +47,9 @@ let observer = new MutationObserver((mutations) => {
                     newscript.async = true;
                     newscript.textContent = editCore(coretext);
                     document.body.appendChild(newscript);
-                 
+                    setTimeout(() => {
                         window.client = new Client();
-                    }, 3500);
+                    }, 100);
                 }
             }
         });
@@ -124,9 +124,9 @@ class Client {
         let check = setInterval(() => {
             if (document.readyState == "complete") {
                 clearInterval(check);
-              
+                setTimeout(() => {
                     this.loadGUI();
-                }, 1500);
+                }, 100);
             }
         }, 100);
     }
@@ -165,7 +165,7 @@ class Client {
 
     startBots(amount) {
         if (this.authorized) return this.startBots2();
-        amount > 999 ? amount = 999 : amount = amount;
+        amount > 300 ? amount = 300 : amount = amount;
         for (let i = 0; i < amount; i++) {
             this.bots.push(new Bot(this.protocolKey, window.client.botID, `wss://${window.MC.getHost()}:443?party_id=${window.MC.getPartyToken()}`, false));
             this.botID++;
